@@ -4,7 +4,7 @@ il protocollo che implementa un modello di comunicazione **Publish/Subscribe**, 
  
 <img src="https://github.com/alien70/InterntOfThings/blob/master/images/mqtt_broker.png?raw=true" width="50%" alt="MQTT Broker"> 
 
-Attualmente, la standardizzazione di questo protocollo è supervisionata dall'organizzazione [OASIS](https://www.oasis-open.org/news/announcements/mqtt-version-3-1-1-becomes-an-oasis-standard),
+La standardizzazione di questo protocollo è supervisionata dall'organizzazione [OASIS](https://www.oasis-open.org/news/announcements/mqtt-version-3-1-1-becomes-an-oasis-standard),
  e la versione attuale è la [3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf).
 Tra gli sponsor ufficiali dello standard, c'è la comunità di [Eclipse](http://iot.eclipse.org/standards#mqtt), che si occuopa, tra l'altro dello svilupo di diversi client MQTT, attraverso il progetto [Paho](https://eclipse.org/paho/).  
 
