@@ -169,3 +169,26 @@ Per testare il funzionamento di questi due client è sufficiente aprire due shel
 ```
 ...$: node index.js
 ```
+<table>
+    <tr>
+        <td>
+            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/thermostat_client.png?raw=true" alt="" >
+        </td>
+        <td>
+            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/romote_client_1.png?raw=true" alt="" >
+        </td>
+        <td>
+            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/remote_client_2.png?raw=true" alt="" >
+        </td>
+    </tr>
+    <tr style="text-align: center;">
+        <td>Fig. 1 - Thermostat in esecuzione</td>
+        <td>Fig. 2 - Thermostat online</td>
+        <td>Fig. 2 - Thermostat offline</td>
+    </tr>
+</table>
+
+Nelle immagini vengono rappresentati, da sinistra a destra, i seguenti step:
+* il client che emula il termostato viene avviato;
+* il client che emula il controllo remoto segnala che il termostato è andato 'online';
+* il processo del termostato viene arrestato, ed il controllo remoto segnala che il termostato è andato 'offline';
