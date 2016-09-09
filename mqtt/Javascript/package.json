@@ -1,0 +1,27 @@
+{
+  "name": "thermostat.js",
+  "version": "1.0.0",
+  "description": "smart thermostat javascript emulator ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alien70/InternetOfThings.git"
+  },
+  "keywords": [
+    "IoT",
+    "mqtt",
+    "Domotic"
+  ],
+  "author": "Maurizio Attanasi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alien70/InternetOfThings/issues"
+  },
+  "homepage": "https://github.com/alien70/InternetOfThings#readme",
+  "dependencies": {
+    "mqtt": "^1.14.1"
+  }
+}
