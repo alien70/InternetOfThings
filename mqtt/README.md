@@ -1,5 +1,5 @@
 ![MQTT Logo](https://github.com/alien70/InternetOfThings/blob/master/images/mqttorg-glow.png?raw=true)  
-Inizialmemte sviluppato da IBM per implementare la comunicazione satellitare con gli impianti petroliferi, 
+Inizialmemte sviluppato da IBM per implementare la comunicazione satellitare con i sistemi di controllo degli impianti petroliferi, 
 il protocollo che implementa un modello di comunicazione **Publish/Subscribe**, richiede la presenza di un **broker** che si occupa della gestione e dell'instradamento dei messaggi verso altri nodi MQTT.
  
 <img src="https://github.com/alien70/InterntOfThings/blob/master/images/mqtt_broker.png?raw=true" width="50%" alt="MQTT Broker"> 
