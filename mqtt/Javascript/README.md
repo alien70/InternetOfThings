@@ -73,8 +73,10 @@ client.on('connect', () => {
 })
 ```
 
-L'analisi di queste prime righe di codice ci consentono di introdurre alcuni dei punti chiave del protocollo MQTT.
-### Topic ### 
+L'analisi di queste prime righe di codice ci consentono di introdurre alcuni dei punti chiave del protocollo MQTT.  
+
+Topic
+
 ```
 var onlineTopic = uid + '/thermostat/online';
 ```
@@ -104,7 +106,7 @@ Il primo parametro di tali opzioni, *qos*, definisce quella che secondo la termi
 * **2**: il broker/client spedirà il messaggio solo una volta utilizzando un meccanismo di handshake a quattro step.
 Il secondo parametro '*retain*' serve per comunicare al broker se conservare o meno l'ultimo valore conosciuto del messaggio definito dal topic in esame.
 
-# remote # 
+# remote
 In modo analogo a quanto fatto per il controller del termostato, implementeremo nella cartella *remote* un'applicazione javascript che simulerà il controllo remoto del termostato.
 Il contenuto del file *index.js* è:
 
