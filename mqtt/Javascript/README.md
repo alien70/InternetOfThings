@@ -1,7 +1,7 @@
 Per implementare i simulatori del termostato e del controllo remoto direttamente in linguaggio javascript, faremo uso dell'infrastruttura fornita da [Node.js](https://nodejs.org/en/) che riterremo già installato sul sistema e del quale utilizzaremo il *package manager* [npm](https://www.npmjs.com/) per l'installazione dei moduli necessari.
 
 <div style="background-color:#333;">
-<img  src="https://github.com/alien70/InternetOfThings/blob/master/images/nodejs-logo.png?raw=true" width="10%" alt="Node.js Logo" >
+<img  src="https://github.com/alien70/InternetOfThings/blob/master/images/nodejs-logo.jpeg?raw=true" width="10%" alt="Node.js Logo" >
 </div>
 
 Iniziamo con il creare due cartelle *thermostat* e *remote* che conterranno le implementazioni dei relativi moduli.
