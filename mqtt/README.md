@@ -8,7 +8,7 @@ Attualmente, la standardizzazione di questo protocollo è supervisionata dall'or
  e la versione attuale è la [3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf).
 Tra gli sponsor ufficiali dello standard, c'è la comunità di [Eclipse](http://iot.eclipse.org/standards#mqtt), che si occuopa, tra l'altro dello svilupo di diversi client MQTT, attraverso il progetto [Paho](https://eclipse.org/paho/).  
 
-<img src="https://github.com/alien70/InterntOfThings/blob/master/images/paho_logo_400?raw=true" width="50%" alt="PAHO Logo">
+<img src="https://github.com/alien70/InternetOfThings/blob/master/images/paho_logo_400.png?raw=true" width="25%" alt="PAHO Logo">
 
 Attualmente vengono sviluppati client per i maggiori linguaggi di programmazione attualmente in uso
 
@@ -54,8 +54,9 @@ Attualmente vengono sviluppati client per i maggiori linguaggi di programmazione
 </table>
 
 Per descrivere le caratteristiche fondamentali del protocollo seguiremo un approccio pratico, implementando un caso semplice di comunicazione M2M.  
-Inizieremo a sviluppare i client del servizio utilizzando come broker uno dei tanti servizi gratuiti messi a disposizione dai diversi provider mqtt.  
-In particolare utizzeremo il servizio fornito da [HiveMQ](http://www.mqtt-dashboard.com/).  
-Tra i vari client disponibili, sperimenteremo in particolare con quelli per 
+Inizieremo a sviluppare i client del servizio utilizzando come broker uno dei tanti servizi gratuiti messi a disposizione dai diversi provider mqtt. In particolare utizzeremo il servizio fornito da [HiveMQ](http://www.mqtt-dashboard.com/).
+
+A titolo di esempio realizzeremo la simulazione di un **termostato intelligente**. Il sistema consisterà essenzialmente di un modulo di controllo del termostato che sarà responsabile della *pubblicazione* dello *stato* attuale (connesso/disconnesso, temperatura, umidità ambientale, ...) e che *sottoscriverà* i *topic* relativi ai comandi che potranno essere serviti (set point della temperatura, ...). Accanto al *controller*, implementeremo un'applicazione per il controllo remoto del termostato.
+Tra i vari client disponibili, sperimenteremo in particolare con quelli per:
 * [JavaScript](https://github.com/alien70/InternetOfThings/tree/master/mqtt/Javascript) 
 * [.NET](https://github.com/alien70/InternetOfThings/tree/master/mqtt/dotNet)
