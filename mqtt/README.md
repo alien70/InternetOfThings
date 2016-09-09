@@ -10,3 +10,52 @@ Tra gli sponsor ufficiali dello standard, c'è la comunità di [Eclipse](http://
 
 <img src="https://github.com/alien70/InterntOfThings/blob/master/images/paho_logo_400?raw=true" width="50%" alt="PAHO Logo">
 
+Attualmente vengono sviluppati client per i maggiori linguaggi di programmazione attualmente in uso
+
+<table>
+<thead>
+<th>Client</th>
+<th>Release ufficiale</th>
+</thead>
+<tbody>
+<tr>
+	<td>Java</td>
+	<td>1.1.0</td>
+</tr>
+<tr>
+	<td>Python</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>Javascript</td>
+	<td>1.0.2</td>
+</tr>
+<tr>
+	<td>Golang</td>
+	<td>1.0.0</td>
+</tr>
+<tr>
+	<td>C</td>
+	<td>1.1.0</td>
+</tr>
+<tr>
+    <td>.Net (C#)</td>
+	<td>4.0.4</td>
+</tr>
+<tr>
+	<td>Android Service</td>
+	<td>1.1.0</td>
+</tr>
+<tr>
+	<td>Embedded C++</td>
+	<td>1.0.0</td>
+</tr>
+</tbody>
+</table>
+
+Per descrivere le caratteristiche fondamentali del protocollo seguiremo un approccio pratico, implementando un caso semplice di comunicazione M2M.  
+Inizieremo a sviluppare i client del servizio utilizzando come broker uno dei tanti servizi gratuiti messi a disposizione dai diversi provider mqtt.  
+In particolare utizzeremo il servizio fornito da [HiveMQ](http://www.mqtt-dashboard.com/).  
+Tra i vari client disponibili, sperimenteremo in particolare con quelli per 
+* [JavaScript](https://github.com/alien70/InternetOfThings/tree/master/mqtt/Javascript) 
+* [.NET](https://github.com/alien70/InternetOfThings/tree/master/mqtt/dotNet)
