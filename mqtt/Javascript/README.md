@@ -190,8 +190,9 @@ Per testare il funzionamento di questi due client è sufficiente aprire due shel
 
 Nelle immagini vengono rappresentati, da sinistra a destra, i seguenti step:
 * il client che emula il termostato viene avviato;
-* il client che emula il controllo remoto segnala che il termostato è andato 'online';
-* il processo del termostato viene arrestato, ed il controllo remoto segnala che il termostato è andato 'offline';
+* il client che emula il controllo remoto segnala che il termostato è andato 'online';  
+* il processo del termostato viene arrestato, ed il controllo remoto segnala che il termostato è andato 'offline';  
+
 ## IoT MQTT Dashboard ##
 Un utile stumento per verificare il funzionamento del sistema è il client [IoT MQTT Dashboard](https://play.google.com/store/apps/details?id=com.thn.iotmqttdashboard&hl=it) per dispositivi Android, che una volta configurato per puntare al broker utilizzato nell'esempio, e per sottoscrivere il topic relativo allo stato di connessione del termostato ci consente di testare il funzionamento del sistema realizzato.
 <table>
