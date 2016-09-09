@@ -72,11 +72,9 @@ client.on('connect', () => {
     });
 })
 ```
+L'analisi di queste prime righe di codice ci consentono di introdurre alcuni dei punti chiave del protocollo MQTT. 
 
-L'analisi di queste prime righe di codice ci consentono di introdurre alcuni dei punti chiave del protocollo MQTT.  
-
-Topic
-
+## Topic ##
 ```
 var onlineTopic = uid + '/thermostat/online';
 ```
