@@ -37,7 +37,7 @@ il comando, serve per la creazione del file *package.json* nella cartella in que
 }
 ```
 Tra le varie informazioni inserite, abbiamo definito il nome del file sorgente principale dell'applicazione '*index.js*', quindi il passo successivo è quello di creare un file con tale nome nella cartella attuale.
-## Installazione di mqtt ## 
+## Installazione di mqtt
 A questo punto installiamo, a livello locale, il package [mqtt.js](https://github.com/mqttjs) mediante il comando
 ```
 ...$ npm install mqtt --save
