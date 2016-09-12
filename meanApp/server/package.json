@@ -1,0 +1,19 @@
+{
+  "name": "ThermometerServer",
+  "version": "1.0.0",
+  "description": "REST API for mqtt demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maurizio Attanasi",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.15.0",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.0",
+    "node-restful": "^0.2.5"
+  }
+}

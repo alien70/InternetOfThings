@@ -38,7 +38,7 @@ client.on('connect', () => {
     });
 
 	console.log('Set point %s', setPoint.toFixed(2));
-})
+});
 
 // Periodic task (triggers every minute)
 var job = new cron.CronJob('* * * * *', function() {  
