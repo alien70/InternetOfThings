@@ -207,9 +207,9 @@ Un utile stumento per verificare il funzionamento del sistema è il client [IoT 
 </table>
 
 # Temperatura corrente #
-Per simulare la lettura di un sensore, implementiamo, sul controller, un task periodico che ad intervalli di un minuto, pubblichi un valore di temperatura e di umidità relativa (simulato), e gli istanti in cui tali letture sono state fatta.  
+Per simulare la lettura di un sensore, implementiamo, sul controller, un task periodico che ad intervalli di un minuto, pubblichi un valore di temperatura e uno di umidità relativa (simulati), e gli istanti in cui tali letture sono state fatte.  
 ## cron.js ##
-A tal fine, aggiungiamo al nostro controller, la dipendenza con il package **cron**  
+A tal fine, aggiungiamo al nostro controller, la dipendenza con il package **cron**  che ci consentirà di implementare il trask periodico 
 
 ```
 ...$: npm install cron --save
@@ -217,18 +217,19 @@ A tal fine, aggiungiamo al nostro controller, la dipendenza con il package **cro
 
 e modifichiamo il sorgente del controller come segue:
 
+1. aggiungiamo la dipendenza dal pacchetto cron:
 ``` javascript
 var cron = require('cron');
 ```
 
-Aggiungiamo un generatore di numeri casuali 
+2. un generatore di numeri casuali 
 ``` javascript
 // Noise generator
 function getRandomValue(min, max) { 
   return { value: (Math.random()*(max - min)) + min, timestamp: Date.now() };
 }
 ```
-Aggiungiamo un task che, ad intervalli di un minuto, aggiorni la lettura di temperatura ed umidità, e ne pubblichi i relativi **topics**.
+3.  un task che, ad intervalli di un minuto, aggiorni la lettura di temperatura ed umidità, e ne pubblichi i relativi **topics**.
 ``` javascript
 // Periodic task (triggers every minute)
 var job = new cron.CronJob('* * * * *', function() {  
