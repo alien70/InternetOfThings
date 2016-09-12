@@ -1,4 +1,4 @@
-# Internet Of Things #
+# Internet Of Things - Protocolli di Comunicazione #
   
 Riprendendo il discorso iniziato nella nota [Industry 4.0. -To boldly go where no man has gone before... (Part II)](https://maurizioattanasi.blogspot.it/2016/09/industry-40-to-boldly-go-where-no-man_6.html), entro la fine del 2020, 20.8 miliardi di dispositivi saranno connessi ad internet per formare l'**Internet delle Cose**. Considerando che, per lo stesso anno è prevista una popolazione mondiale di poco superiore a 7.5 miliardi, avremo, connessi ad internet, circa tre dispositivi per abitante sulla terra.  
 
@@ -14,4 +14,6 @@ Una risposta alla domanda, ci viene dalla seguente tabella, che riassume i requi
 Tra i diversi protocolli che soddisfano le specifiche definite nella tabella di sopra, citiamo quelli maggiormente in uso per l'implemetazione della comunicazione **M2M**:
 * **[MQTT](https://github.com/alien70/InternetOfThings/tree/master/mqtt)**;
 * **CoAP**;
-* **AMQP** 
+* **AMQP**
+
+Obiettivo di questa nota è quello di esplorare con un approccio *hands-on* alcuni degli strumenti attualmente disponibili per l'implementazione di tale comunicazione. 
