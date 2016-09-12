@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/alien70/InternetOfThings#readme",
   "dependencies": {
+    "cron": "^1.1.0",
     "mqtt": "^1.14.1"
   }
 }
