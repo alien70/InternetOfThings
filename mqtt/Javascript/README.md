@@ -297,7 +297,7 @@ client.on('message', (topic, message) => {
             <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/thermo_publish.PNG?raw=true" alt="" >
         </td>
         <td>
-            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/remote_suscribe.png?raw=true" alt="" >
+            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/remote_suscribe.PNG?raw=true" alt="" >
         </td>
     </tr>
     <tr style="text-align: center;">
