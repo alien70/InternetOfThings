@@ -4,7 +4,8 @@ Riprendendo il discorso iniziato nella nota [Industry 4.0. -To boldly go where n
 
 <img src="https://github.com/alien70/InterntOfThings/blob/master/images/worldpop.png?raw=true" width="50%" alt="world population">
 
-Sulla base di questa considerazione, la domanda che sorge spontanea, è: "*come si connetteranno tutti questi dispositivi tra loro, ai provider di servizi o, più in generale al cloud, considerando che, in generale, il requisito principale sarà quello di garantire una minima occupazione di banda, e massima efficienza energetica, e che le risorse computazionali disponibili saranno, nella quasi totalità dei casi, molto ridotte?*"
+Sulla base di questa considerazione, la domanda che sorge spontanea, è: "*come si connetteranno tutti questi dispositivi tra loro, ai provider di servizi o, più in generale al cloud, considerando che, in generale, il requisito principale sarà quello di garantire una minima occupazione di banda, e massima efficienza energetica, e che le risorse computazionali disponibili saranno, nella quasi totalità dei casi, molto ridotte?*".
+Una risposta alla domanda, ci viene dalla seguente tabella, che riassume i requisiti minimi dell'hardware e delle infrastrutture di rete per consentire l'implementazione di un'efficace comunicazione M2M.
 
 <img src="https://github.com/alien70/InterntOfThings/blob/master/images/0915_SiLabs_Table2.gif?raw=true" width="50%" alt="IoT End-Node/Device Requirements">  
 
