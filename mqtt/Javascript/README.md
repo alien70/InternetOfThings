@@ -205,3 +205,88 @@ Un utile stumento per verificare il funzionamento del sistema è il client [IoT 
 </td>
 </tr>
 </table>
+
+# Temperatura corrente #
+Per simulare la lettura di un sensore, implementiamo, sul controller, un task periodico che ad intervalli di un minuto, pubblichi un valore di temperatura e di umidità relativa (simulato), e gli istanti in cui tali letture sono state fatta.  
+## cron.js ##
+A tal fine, aggiungiamo al nostro controller, la dipendenza con il package **cron**  
+
+```
+...$: npm install cron --save
+```
+
+e modifichiamo il sorgente del controller come segue:
+
+``` javascript
+var cron = require('cron');
+```
+
+Aggiungiamo un generatore di numeri casuali 
+``` javascript
+// Noise generator
+function getRandomValue(min, max) { 
+  return { value: (Math.random()*(max - min)) + min, timestamp: Date.now() };
+}
+```
+Aggiungiamo un task che, ad intervalli di un minuto, aggiorni la lettura di temperatura ed umidità, e ne pubblichi i relativi **topics**.
+``` javascript
+// Periodic task (triggers every minute)
+var job = new cron.CronJob('* * * * *', function() {  
+
+  currTemp = getRandomValue(setPoint - 1, setPoint + 1);
+    client.publish(temperatureTopic, JSON.stringify(currTemp), {
+      qos: 0,
+      retain: true
+    });
+
+  console.log('Temperature: %s° @ ', currTemp.value.toFixed(2) , currTemp.timestamp);
+
+  var currHumidity = getRandomValue(40, 60);
+    client.publish(temperatureTopic, JSON.stringify(currHumidity), {
+      qos: 0,
+      retain: true
+    });
+
+    console.log('Humidity: %s° @ ', currHumidity.value.toFixed(2) , currHumidity.timestamp);
+
+}, null, true);
+```
+
+Modifichiamo anche il simulatore del controllo remoto in modo da sottoscrivere i nuovi **topics** pubblicati dal termostato
+
+``` javascript
+client.on('connect', () => {
+  client.subscribe(onlineTopic);
+  client.subscribe(temperatureTopic);
+  client.subscribe(humidityTopic);
+  client.subscribe(temperatureSetpointTopic);
+})
+```
+
+e stampare i valori letti sulla console
+``` javascript
+client.on('message', (topic, message) => {
+  switch(topic){
+    case onlineTopic: {
+      connected = (message.toString() === 'true');  
+      console.log('Thermostat is %s', (connected) ? 'online' : 'offline' );   
+    } break;
+
+    case temperatureTopic: {
+        currTemp = JSON.parse(message);
+        console.log('Temperature: %s° @ ', currTemp.value.toFixed(2) , currTemp.timestamp);
+    } break;
+
+    case humidityTopic: {
+        currHumidity = JSON.parse(message);
+        console.log('Humidity: %s% @ ', currHumidity.value.toFixed(2) , currHumidity.timestamp);
+    } break;
+
+    case temperatureSetpointTopic: {
+      setPoint = JSON.parse(message);
+      console.log('Set point %s', setPoint.toFixed(2));
+    } break;
+  }
+})
+
+```
