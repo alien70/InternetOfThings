@@ -291,3 +291,17 @@ client.on('message', (topic, message) => {
 })
 
 ```
+<table>
+    <tr>
+        <td>
+            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/thermo_publish.png?raw=true" alt="" >
+        </td>
+        <td>
+            <img style="background-color:#333;" src="https://github.com/alien70/InternetOfThings/blob/master/images/remote_suscribe.png?raw=true" alt="" >
+        </td>
+    </tr>
+    <tr style="text-align: center;">
+        <td>Fig. 1 - Thermostat</td>
+        <td>Fig. 2 - Remote</td>
+    </tr>
+</table>
