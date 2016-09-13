@@ -14,7 +14,11 @@ Inizieremo con lo sviluppo delle funzionalità server implementando un'API REST 
 
 * [Server](https://github.com/alien70/InternetOfThings/tree/master/mean/server)
 <<<<<<< HEAD
+<<<<<<< HEAD
 * [Client](https://github.com/alien70/InternetOfThings/tree/master/mean/client) 
+=======
+* [Client](https://github.com/alien70/InternetOfThings/tree/master/mean/client) 
+>>>>>>> 782dac010b6a3d35a1870926be77a851c6a09fb3
 =======
 * [Client](https://github.com/alien70/InternetOfThings/tree/master/mean/client) 
 >>>>>>> 782dac010b6a3d35a1870926be77a851c6a09fb3
