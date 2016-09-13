@@ -305,3 +305,30 @@ client.on('message', (topic, message) => {
         <td>Fig. 2 - Remote</td>
     </tr>
 </table>
+
+# Stream dei dati acquisiti #
+Modifichiamo il nostro 'telecomando' in modo che, mediante le [API REST](https://github.com/alien70/InternetOfThings/tree/master/mean/server), salvi i dati acquisiti sull'istanza MongoDB.  
+A tal scopo utilizzaremo il modulo [request](https://github.com/request/request) per node.js, e modificheremo la callback per la gestione dei messaggi sottoscritti come segue:
+
+``` javascript
+    var request = require('request');
+...
+    case readingTopic: {
+        currentRead = JSON.parse(message);
+        console.log('Current reading: Temperature = %s° - Humidity = %s% - Timestamp', currentRead.temperature.toFixed(2), currentRead.humidity.toFixed(2), currentRead.timestamp);
+
+        // Serialize current reading on MongoDB via REST Api
+        request({
+            url: url,
+            method: 'POST',
+            json: currentRead
+        }, function(error, response, body) {
+            if(error){
+                console.log(error);
+            } else {
+                console.log(response.statusCode, body);
+            }
+        });								
+    } break;
+```
+Ora, abbiamo anche la registrazione dei dati inviati dal nostro termostato intelligente su un db può essere installato su un nostro server o, in alternativa, su uno dei tanti servizi cloud, gratuiti o a pagamento, disponibili in rete.

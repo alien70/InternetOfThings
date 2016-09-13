@@ -97,6 +97,8 @@ module.exports = function(app, route) {
     };
 };
 ```
+Fatta una chiamata al server dal browser, l'esito è:
+
 ![REST API Result](https://github.com/alien70/InternetOfThings/blob/master/images/REST%20API%20Call.png?raw=true)
 
 
