@@ -8,9 +8,4 @@ L'acronimo sta per:
 
 Approfittiamo di questo progetto per esplorare le possibilità offerte da questo insieme di tecnologie nell'ambito di un progetto IoT.
 
-Una delle caratteristiche fondamentali dello sviluppo M.E.A.N. è la totale separazione tra server e client.
-
-Inizieremo con lo sviluppo delle funzionalità server implementando un'API REST che consenta di salvare, su un'istanza di MongoDB, le letture del nostro termostato.
-
-* [Server](https://github.com/alien70/InternetOfThings/tree/master/mean/server)
-* [Client](https://github.com/alien70/InternetOfThings/tree/master/mean/client)
+Per lo sviluppo delle funzionalità necessarie, faremo riferimento ai passi descritti nel tutorial [How to Build a M.E.A.N Web Application](http://travistidwell.com/blog/2015/01/20/how-to-build-a-mean-web-application/) prodotto da [Travis Tidwell](http://travistidwell.com/)
