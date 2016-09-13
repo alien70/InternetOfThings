@@ -55,6 +55,48 @@ mongoose.connection.once('open', function() {
 });
 ```
 ## Modello ##
+Per agevolare la modellazione dei dati che salveremo nel db MongoDB, utilizzeremo il package [mongoose](http://mongoosejs.com/). Creata la cartella *models*, creiamo il modello dei dati di una lettura del nostro termostato nel file *Thermostat.js*
+``` javascript
+var mongoose = require('mongoose');
 
-## Controller ##
+var ThermostatSchema = new mongoose.Schema({
+	uid: {
+		type: String,
+		required: true
+	},
+	temperature: {
+		type: Number,
+	},
+	humidity: {
+		type: Number
+	},
+	timestamp: {
+		type: Date
+	}
+});
+
+// Exports the model schema
+module.exports = ThermostatSchema;
+```
+## API ##
+Per la creazione dell'API utilizzeremo il modulo [node-restful](https://github.com/baugarten/node-restful)
+``` javascript
+var restful = require('node-restful');
+
+module.exports = function(app, route) {
+    var rest = restful.model(
+        'thermostat',
+        app.models.thermostat).methods(['get', 'post', 'put', 'delete']);
+
+    // Rest the endpoint with the application
+    rest.register(app, route);
+
+    // Return the middleware
+    return function(req, res, next) {
+        next()
+    };
+};
+```
+![REST API Result]()
+
 
