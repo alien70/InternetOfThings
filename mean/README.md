@@ -12,5 +12,5 @@ Una delle caratteristiche fondamentali dello sviluppo M.E.A.N. è la totale sepa
 
 Inizieremo con lo sviluppo delle funzionalità server implementando un'API REST che consenta di salvare, su un'istanza di MongoDB, le letture del nostro termostato.
 
-* [Server]()
-* [Client]() 
+* [Server](https://github.com/alien70/InternetOfThings/tree/master/mean/server)
+* [Client](https://github.com/alien70/InternetOfThings/tree/master/mean/client) 
