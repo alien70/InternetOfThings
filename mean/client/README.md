@@ -86,7 +86,7 @@ Ovviamente i dati sono simulati, ma il risultato è già notevole:
     <img src="https://github.com/alien70/InternetOfThings/blob/master/images/mocked_data.png?raw=true" width="80%" alt="YEOMAN Wizard">
 </div>
 
-## Lettura dei dati via REST ##
+## Lettura dei dati storici via REST ##
 Nei prossimi passi, modificheremo il nostro controller affinchè in luogo dei dati 'statici' inseriti al passo precedente, prelevi le letture dal database MongoDB, mediante le API, sviluppate in precedenza.  
 A tal proposito, iniziamo ad installare le dipendenze per il modulo [Restangular](https://github.com/mgonto/restangular). Per far ciò utilizzeremo [Bower](https://bower.io/), un package manager per i progetti web, che abbiamo precedentemente installato sulla macchina di sviluppo.
 
@@ -118,4 +118,3 @@ angular
     return ThermostatRestangular.service('thermostat');
   });
 ```
-
