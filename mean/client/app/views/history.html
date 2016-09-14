@@ -1,0 +1,14 @@
+<table class="table table-striped  table-bordered table-list">
+    <thead>
+        <th>Temperature</th>
+        <th>Humidity</th>
+        <th>Timestamp</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="thermostat in thermostats">
+            <td>{{ thermostat.temperature | number: 2}}°</td>
+            <td>{{ thermostat.humidity | number: 2}}%</td>
+            <td>{{ thermostat.timestamp | date: 'dd/MM/yyyy hh:mm:ss' }}</td>
+        </tr>
+    </tbody>
+</table>
