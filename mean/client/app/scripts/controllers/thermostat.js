@@ -9,38 +9,24 @@
  */
 angular.module('clientApp')
   .controller('ThermostatCtrl', function ($scope, Thermostat) {
-    var data = Thermostat.getList().$object;
-    $scope.thermostats = data;
+    Thermostat.getList().then(function(values){
+      var data = values;
 
-    $scope.renderer = 'line';
+      $scope.thermostats = data;
 
-    $scope.temperatureReading =  
+      $scope.renderer = 'line';
+
+      $scope.temperatureReading = _.chain(data)
+        .map(function(o){
+          return {
+            x: Date.parse(o.timestamp) / 100,
+            y: o.temperature
+          };
+        })
+        .flatten()
+        .value();
+
+        console.log($scope.temperatureReading);    
+    });
     
-    [
-      {
-        x: 0,
-        y: 0
-      },
-      {
-        x: 1,
-        y: 1
-      },
-      {
-        x: 2,
-        y: 2
-      },
-      {
-        x: 3,
-        y: 3
-      },
-      {
-        x: 4,
-        y: 4
-      },
-      {
-        x: 5,
-        y: 5
-      }
-      
-    ];
   });

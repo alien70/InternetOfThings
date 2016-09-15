@@ -30,8 +30,20 @@ angular.module('clientApp')
               series: [{data: scope.data, color: attrs.color}],
               renderer: scope.renderer
             });
+/*
+            var xAxis = new Rickshaw.Graph.Axis.X( {
+                graph: graph
+            } );
+*/
+            var xAxis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+            
+            var yAxis = new Rickshaw.Graph.Axis.Y( {
+                graph: graph,
+                orientation: 'left'
+            } );
 
             graph.render();
+            
           });
         }
       };

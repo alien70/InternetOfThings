@@ -41,6 +41,6 @@ angular
       });
     });
   })
-.factory('Thermostat', function(ThermostatRestangular) {
+  .factory('Thermostat', function(ThermostatRestangular) {
     return ThermostatRestangular.service('thermostat');
   });
