@@ -16,7 +16,7 @@ angular.module('clientApp')
       template: '<div></div>',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-          scope.$watchCollection('[data, renderer]', function(newVal, oldVal){
+          scope.$watchCollection('[data, renderer, lc]', function(newVal, oldVal){
             if(!newVal[0]){
               return;
             }
@@ -27,14 +27,10 @@ angular.module('clientApp')
               element: element[0],
               width: attrs.width,
               height: attrs.height,
-              series: [{data: scope.data, color: attrs.color}],
+              series: [{data: scope.data[0], color: 'red'}, {data: scope.data[1], color: 'steelblue'}],
               renderer: scope.renderer
             });
-/*
-            var xAxis = new Rickshaw.Graph.Axis.X( {
-                graph: graph
-            } );
-*/
+
             var xAxis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
             
             var yAxis = new Rickshaw.Graph.Axis.Y( {

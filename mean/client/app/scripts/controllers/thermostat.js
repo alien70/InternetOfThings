@@ -16,17 +16,29 @@ angular.module('clientApp')
 
       $scope.renderer = 'line';
 
-      $scope.temperatureReading = _.chain(data)
+      var temperatureReading = _.chain(data)
         .map(function(o){
           return {
-            x: Date.parse(o.timestamp) / 100,
+            x: Date.parse(o.timestamp) / 1000,
             y: o.temperature
           };
         })
         .flatten()
         .value();
 
-        console.log($scope.temperatureReading);    
+      var humidityReading = _.chain(data)
+        .map(function(o){
+          return {
+            x: Date.parse(o.timestamp) / 1000,
+            y: o.humidity
+          };
+        })
+        .flatten()
+        .value();
+
+        $scope.thermostatReading = [ temperatureReading, humidityReading ];
+        
+        console.log($scope.thermostatReading);    
     });
     
   });
