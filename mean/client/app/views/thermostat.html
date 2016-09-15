@@ -1,8 +1,19 @@
 <h1>Thermostat</h1>
-    
+<h3>Thermostat state: {{ thermostat_state }}</h3>
+<h3 ng-show="currentRead">Temperature: {{ currentRead.temperature | number: 2}}°</h3>
+<div id="container">
+    <analog-gauge 
+        ng-show="currentRead"
+        data="currentRead.temperature"
+        ></analog-gauge>
+</div>
+<h3 ng-show="currentRead">Humidity: {{ currentRead.humidity | number: 2}}%</h3>
+<analog-gauge ng-show="currentRead"></analog-gauge>
+<hr/>
 <rickshaw-chart
     data="thermostatReading"
     color="red"
     renderer="renderer"
     width="750"
     height="450"></rickshaw-chart>
+<hr/>

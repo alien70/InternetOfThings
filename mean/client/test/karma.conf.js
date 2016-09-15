@@ -29,6 +29,10 @@ module.exports = function(config) {
       'bower_components/d3/d3.js',
       'bower_components/rickshaw/rickshaw.js',
       'bower_components/async/dist/async.js',
+      'bower_components/paho-mqtt/src/mqttws31.js',
+      'bower_components/highcharts/highcharts.js',
+      'bower_components/highcharts/highcharts-more.js',
+      'bower_components/highcharts/modules/exporting.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
