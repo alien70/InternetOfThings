@@ -9,11 +9,3 @@
 </div>
 <h3 ng-show="currentRead">Humidity: {{ currentRead.humidity | number: 2}}%</h3>
 <analog-gauge ng-show="currentRead"></analog-gauge>
-<hr/>
-<rickshaw-chart
-    data="thermostatReading"
-    color="red"
-    renderer="renderer"
-    width="750"
-    height="450"></rickshaw-chart>
-<hr/>

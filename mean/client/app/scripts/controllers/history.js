@@ -9,5 +9,11 @@
  */
 angular.module('clientApp')
   .controller('HistoryCtrl', function ($scope, Thermostat) {
-    $scope.thermostats = Thermostat.getList().$object;
+        $scope.viewTable = true;
+        $scope.viewChart = false;
+        Thermostat.getList().then(function(values){
+          var data = values;
+          $scope.thermostats = data;
+        });
+        
   });

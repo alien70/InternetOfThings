@@ -118,3 +118,141 @@ angular
     return ThermostatRestangular.service('thermostat');
   });
 ```
+Configurata l'interfaccia verso il web service adibito alla lettura dei dati, modifichiamo il controller associato alla pagina *history.html* in modo da leggere i dati provenienti dal servizio stesso.
+
+```javascript
+angular.module('clientApp')
+  .controller('HistoryCtrl', function ($scope, Thermostat) {
+    
+        Thermostat.getList().then(function(values){
+          var data = values;
+          $scope.thermostats = data;
+        });
+        
+  });
+```
+
+**NOTA:** Un modo alternativo per leggere i dati provenienti dal web service poteva essere il seguente:
+```javascript
+$scope.thermostats = Thermostat.getList().$object;
+```
+La differenza tra i due apporcci, sta nel fatto che, nel secondo modo, non si tiene conto della natura asincrona della chiamata al web service.
+Se l'obiettivo della chiamata fosse esclusivamente quello di utilizzare i dati per, ad esempio, alimentare una tabella, i due approcci sarebbero fondamentalmente equivalenti.
+```html
+<table class="table table-striped  table-bordered table-list">
+    <thead>
+        <th>Temperature</th>
+        <th>Humidity</th>
+        <th>Timestamp</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="thermostat in thermostats">
+            <td>{{ thermostat.temperature | number: 2}}°</td>
+            <td>{{ thermostat.humidity | number: 2}}%</td>
+            <td>{{ thermostat.timestamp | date: 'dd/MM/yyyy hh:mm:ss' }}</td>
+        </tr>
+    </tbody>
+</table>
+```
+il cui risultato è il seguente:
+<div style="text-align: center;">
+    <img src="https://github.com/alien70/InternetOfThings/blob/master/images/historicl_table_view.png?raw=true" width="90%" alt="YEOMAN Wizard">
+</div>
+Il risultato cambia invece nel caso in cui, sui dati in arrivo dal web service, di devono eseguire delle operazioni sincrone.  
+A titolo di esempio, proviamo a dare una visualizzazione grafica dei dati ottenuti. A tal fine utilizzeremo, tra i vari prodotti disponibili in rete, il controllo [Rickshaw](http://code.shutterstock.com/rickshaw/) che fornisce diverse opzioni per la visulizzazione di grafici.
+Incapsuliamo il controllo in una direttiva *AngularJS* [rickshawchart.js](https://github.com/alien70/InternetOfThings/blob/master/mean/client/app/scripts/directives/rickshawchart.js), e creiamo una nuova vista, e l'opportuno supporto alla navigazione per visualizzare gli stessi dati in forma grafica.
+
+```javascript
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name clientApp.directive:rickshawChart
+ * @description
+ * # rickshawChart
+ */
+angular.module('clientApp')
+  .directive('rickshawChart', function () {
+    return {
+      scope:{
+        data: '=',
+        renderer: '='
+      },
+      template: '<div></div>',
+      restrict: 'E',
+      link: function postLink(scope, element, attrs) {
+          scope.$watchCollection('[data, renderer]', function(newVal, oldVal){
+            if(!newVal[0]){
+              return;
+            }
+
+            element[0].innerHTML ='';
+
+            var graph = new Rickshaw.Graph({
+              element: element[0],
+              width: attrs.width,
+              height: attrs.height,
+              series: [{data: scope.data[0], color: 'red'}, {data: scope.data[1], color: 'steelblue'}],
+              renderer: scope.renderer
+            });
+
+            var xAxis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+            
+            var yAxis = new Rickshaw.Graph.Axis.Y( {
+                graph: graph,
+                orientation: 'left'
+            } );
+
+            graph.render();
+            
+          });
+        }
+      };
+    });
+
+```
+Il risultato è il seguente:
+<div style="text-align: center;">
+    <img src="https://github.com/alien70/InternetOfThings/blob/master/images/historical_chart_view.png?raw=true" width="90%" alt="YEOMAN Wizard">
+</div>
+Per ottenere tale risultato, è stato necessario riprocessare lo stream di dati JSON in modo da creare le coppie *x-y* da passare al controllo grafico.
+
+```javascript
+angular.module('clientApp')
+  .controller('ChartsCtrl', function ($scope, Thermostat) {
+        $scope.viewChart = true;
+        $scope.viewTable = false;
+
+        Thermostat.getList().then(function(values){
+          var data = values;
+          
+          $scope.thermostats = data;
+
+          $scope.renderer = 'line';
+
+          var temperatureReading = _.chain(data)
+            .map(function(o){
+              return {
+                x: Date.parse(o.timestamp) / 1000,
+                y: o.temperature
+              };
+            })
+            .flatten()
+            .value();
+
+          var humidityReading = _.chain(data)
+            .map(function(o){
+              return {
+                x: Date.parse(o.timestamp) / 1000,
+                y: o.humidity
+              };
+            })
+            .flatten()
+            .value();
+
+            $scope.thermostatReading = [ temperatureReading, humidityReading ];
+        });
+  });
+```
+**NOTA 2:** per estrarre i dati dallo stream completo (*mapping*) è stata utilizzata la libreria [Lodash](https://lodash.com/), che fornisce degli strumenti utilissimi per la manipolazione di matrici.
+

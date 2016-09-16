@@ -31,13 +31,22 @@ angular.module('clientApp')
               renderer: scope.renderer
             });
 
-            var xAxis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+            var xAxis = new Rickshaw.Graph.Axis.Time( { 
+              graph: graph,
+              element: element[1]
+             } );
             
             var yAxis = new Rickshaw.Graph.Axis.Y( {
                 graph: graph,
-                orientation: 'left'
+                orientation: 'left',
+                element: element[1]
             } );
 
+            var legend = new Rickshaw.Graph.Legend({
+                graph: graph,
+                element: element[0]
+            });
+            
             graph.render();
             
           });

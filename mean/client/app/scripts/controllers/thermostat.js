@@ -8,37 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('ThermostatCtrl', function ($scope, Thermostat) {
-    // Historical data charting
-    Thermostat.getList().then(function(values){
-      var data = values;
-
-      $scope.thermostats = data;
-
-      $scope.renderer = 'line';
-
-      var temperatureReading = _.chain(data)
-        .map(function(o){
-          return {
-            x: Date.parse(o.timestamp) / 1000,
-            y: o.temperature
-          };
-        })
-        .flatten()
-        .value();
-
-      var humidityReading = _.chain(data)
-        .map(function(o){
-          return {
-            x: Date.parse(o.timestamp) / 1000,
-            y: o.humidity
-          };
-        })
-        .flatten()
-        .value();
-
-        $scope.thermostatReading = [ temperatureReading, humidityReading ];    
-    });
+  .controller('ThermostatCtrl', function ($scope) {
     
     // liva mqtt data reading
     var client = new Paho.MQTT.Client('broker.mqttdashboard.com', 8000, 'test');

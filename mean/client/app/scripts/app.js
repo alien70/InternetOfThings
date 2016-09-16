@@ -26,6 +26,10 @@ angular
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl',
       })
+      .when('/history/charts', {
+        templateUrl: 'views/charts.html',
+        controller: 'ChartsCtrl',
+      })
       .when('/thermostat', {
         templateUrl: 'views/thermostat.html',
         controller: 'ThermostatCtrl',
