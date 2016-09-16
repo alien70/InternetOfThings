@@ -256,3 +256,18 @@ angular.module('clientApp')
 ```
 **NOTA 2:** per estrarre i dati dallo stream completo (*mapping*) è stata utilizzata la libreria [Lodash](https://lodash.com/), che fornisce degli strumenti utilissimi per la manipolazione di matrici.
 
+## Lettura dati mqtt *realtime* ##
+Cerchiamo ora di visualizzare le letture proveninenti dal campo sottoscrivendo i due topics pubblicati dal termostato.
+A tal fine aggiungiamo al progetto le dipendenze necessarie alla gestione, lato client, della comunicazione mqtt.
+
+```
+$ bower install --save paho-mqtt
+```
+
+Il resto dell'implementazione ricalca grosso modo quanto fatto nei moduli precedenti.
+Il risultato ottenuto è:
+
+<div style="text-align: center;">
+    <img src="https://github.com/alien70/InternetOfThings/blob/master/images/thermostat.png?raw=true" width="90%" alt="YEOMAN Wizard">
+</div>
+
