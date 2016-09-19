@@ -10,7 +10,7 @@
 angular.module('clientApp')
   .controller('ThermostatCtrl', function ($scope) {
     
-    // liva mqtt data reading
+    // live mqtt data reading
     var client = new Paho.MQTT.Client('broker.mqttdashboard.com', 8000, 'test');
 
     var connected = false;
