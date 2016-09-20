@@ -15,5 +15,6 @@ void setup(/* arguments */) {
 }
 
 void loop(/* arguments */) {
+  digitalWrite(13, HIGH);
   nest.Loop();
 }
