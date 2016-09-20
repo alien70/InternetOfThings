@@ -276,7 +276,6 @@ Nel video seguente, abbiamo una dimostrazione del funzionamento dell'intero sist
 
 [![Arduino Due vs MQTT](http://img.youtube.com/vi/3Pf1lSSwZXc/0.jpg)](http://www.youtube.com/watch?v=3Pf1lSSwZXc)
 
-
 **NOTA:** Per una limitazione della libreria *PubSubClient*, è stato necessario ridurre la dimensione del *payload* ad una stringa con meno di 80 caratteri, rimuovendo le informazioni *uid*, e *timestamp* dalla stringa inviata.   
 
 
