@@ -15,9 +15,13 @@ private:
   PubSubClient* _mqttClient;
   char * _server;
   int _port;
+  float _setPoint;
+  unsigned long _time;
 
   const char* onlineTopic = "/nido/online";
   const char* ledTopic = "/nido/led";
+  const char* readingTopic = "/nido/reading";
+  const char* temperatureSetpointTopic = "/nido/temperatureSetpoint";
 
 public:
   Nido();

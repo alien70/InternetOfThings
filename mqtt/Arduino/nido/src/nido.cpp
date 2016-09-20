@@ -2,12 +2,18 @@
 #include "Arduino.h"
 #include <string.h>
 #include <SPI.h>
+#include <ArduinoJson.h>
 
 Nido::Nido() {
   pinMode(13, OUTPUT);
+
+  _time = millis();
+
 }
 
 Nido::Nido(EthernetClass& ethernet, Client& client, const char* server, const int port) {
+  Nido();
+
   _ethernet = &ethernet;
   _client = &client;
   _mqttClient = new PubSubClient(*_client);
@@ -44,6 +50,10 @@ void Nido::Init(const byte* mac) {
   PrintIPAddress();
 
   InitMqtt();
+
+  randomSeed(analogRead(0));
+
+  _setPoint = 25.0;
 }
 
 void Nido::PrintMacAddress() {
@@ -76,11 +86,11 @@ void Nido::InitMqtt() {
 
     // Publishing OnLine Status
     sprintf(buffer, "%s%s", this->_uid, this->onlineTopic);
-    int len = strlen("TRUE");
+    int len = strlen("true");
     bool retained = true;
     Serial.println(buffer);
 
-    this->_mqttClient->publish(buffer, (byte*)"TRUE", len, retained);
+    this->_mqttClient->publish(buffer, (byte*)"true", len, retained);
 
     // Subscribe ledTopic
     this->_mqttClient->setCallback(Nido::OnMessageArrived);
@@ -95,26 +105,49 @@ void Nido::InitMqtt() {
 }
 
 bool Nido::Loop() {
+
+  unsigned long t = millis();
+  if((t - _time) > 6000) {
+    _time = t;
+    char buffer[100];
+    sprintf(buffer, "time: %d", (int)_time);
+    Serial.println(buffer);
+
+    char topic[100], payload[MQTT_MAX_TRANSFER_SIZE];
+    sprintf(topic, "%s%s", this->_uid, this->readingTopic);
+    //String topic = String(this->_uid) + String(this->readingTopic);
+    //String payload;
+    long low = 10*(this->_setPoint - 1), high = 10*(this->_setPoint + 1);
+    float t = ((float) random(low, high)) / 10.0;
+    float h = ((float) random(400, 600)) / 10.0;
+
+    sprintf(payload, "{\"temperature\": %f, \"humidity\": %f}", t, h);
+
+    //sprintf(payload, "ciao");
+    Serial.println(topic);
+    Serial.println(payload);
+    Serial.println(String(strlen(payload)));
+    this->_mqttClient->publish(topic, (byte*) payload, strlen(payload));
+    //this->_mqttClient->publish(topic, "payload");
+
+  }
+
   return this->_mqttClient->loop();
 }
 
 void Nido::OnMessageArrived(char* topic, byte* payload, unsigned int len) {
-  char buffer[100];
-  sprintf(buffer, "Message arrived [%s]", topic);
-  Serial.println(buffer);
-  Serial.println();
+  char buffer[100], pl[10];
 
-  strncpy(buffer, (char*) payload, len);
-  buffer[len] = '\0';
+  strncpy(pl, (char*) payload, len);
+  pl[len] = '\0';
 
+  sprintf(buffer, "Message arrived [%s]: %s", topic, pl);
   Serial.println(buffer);
-  if(strcmp(buffer, "true") == 0) {
+
+  if(strcmp(pl, "true") == 0) {
     digitalWrite(13, HIGH);
-    Serial.println("HIGH");
   } else {
       digitalWrite(13, LOW);
-      Serial.println("LOW");
   }
 
-  Serial.println();
 }

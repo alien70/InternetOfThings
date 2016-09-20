@@ -11,22 +11,22 @@ var setPoint = 0.0;
 var currentRead = null;
 
 // unique identifier of the device
-var uid = '33f58d9d-9b78-4a95-b858-7524d089b520';
-var onlineTopic = uid + '/thermostat/online';
-var readingTopic = uid + 'thermostat/reading';
-var temperatureSetpointTopic = uid + 'thermostat/temperatureSetpoint';
+var uid = '0x90-0xa2-0xda-0xe-0xa1-0x30';
+var onlineTopic = uid + '/nidonido/online';
+var readingTopic = uid + 'nido/reading';
+var temperatureSetpointTopic = uid + 'nido/temperatureSetpoint';
 
 client.on('connect', () => {
 	client.subscribe(onlineTopic);
-	client.subscribe(readingTopic);	
+	client.subscribe(readingTopic);
 	client.subscribe(temperatureSetpointTopic);
 })
 
 client.on('message', (topic, message) => {
 	switch(topic){
 		case onlineTopic: {
-			connected = (message.toString() === 'true');	
-			console.log('Thermostat is %s', (connected) ? 'online' : 'offline' );		
+			connected = (message.toString() === 'true');
+			console.log('Thermostat is %s', (connected) ? 'online' : 'offline' );
 		} break;
 
 		case readingTopic: {
@@ -44,7 +44,7 @@ client.on('message', (topic, message) => {
 					} else {
 						console.log(response.statusCode, body);
 					}
-				});								
+				});
 		} break;
 
 		case temperatureSetpointTopic: {

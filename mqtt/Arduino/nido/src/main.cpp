@@ -14,7 +14,6 @@ void setup(/* arguments */) {
   nest.Init(mac);
 }
 
-void loop(/* arguments */) {
-  digitalWrite(13, HIGH);
+void loop(/* arguments */) {  
   nest.Loop();
 }

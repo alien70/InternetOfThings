@@ -4,11 +4,11 @@ var mqtt = require('mqtt');
 var cron = require('cron');
 
 // unique identifier of the device
-var uid = '33f58d9d-9b78-4a95-b858-7524d089b520';
+var uid = '0x90-0xa2-0xda-0xe-0xa1-0x30';
 
-var onlineTopic = uid + '/thermostat/online';
-var readingTopic = uid + 'thermostat/reading';
-var temperatureSetpointTopic = uid + 'thermostat/temperatureSetpoint';
+var onlineTopic = uid + '/nido/online';
+var readingTopic = uid + 'nido/reading';
+var temperatureSetpointTopic = uid + 'nido/temperatureSetpoint';
 
 var setPoint = 25;
 var currentRead = {
@@ -44,7 +44,7 @@ client.on('connect', () => {
 });
 
 // Periodic task (triggers every minute)
-var job = new cron.CronJob('* * * * *', function() {  
+var job = new cron.CronJob('* * * * *', function() {
 
     var currentRead = {
         uid: uid,
@@ -60,6 +60,6 @@ var job = new cron.CronJob('* * * * *', function() {
 }, null, true);
 
 // Noise generator
-function getRandomValue(min, max) {	
+function getRandomValue(min, max) {
 	return Math.random()*(max - min) + min;
 }
