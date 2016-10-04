@@ -13,5 +13,4 @@ Caratteristica inteesante di CoAP è che, al pari di HTTP, supporta la negoziazi
 ## Sicurezza ##
 Essendo implementato sul protocollo **UDP**, CoAP, si affida all'analogo UDP di **TLS**, ovvero **DTLS** (**D**atagram **T**ransport **L**ayer **S**ecurity).  
 ## Observe ##
-Tra le caratteristiche insite nella natura *publisher/subscriber* del protocollo **mqtt**, è l'aggiornamento continuo di una variabile a carico del *broker*. Un risultato simile viene ottenuto da **CoAP**, estendendo il modello della richiesta aggiungendo un flag, *observe* appunto, che se posto a *true*, porta il server (generalmente il nostro sensore intelligente), a comunicare il cambio di stato ai vari client ogni qual volta questi si verifica.  
-## Resource discovery ##
+Tra le caratteristiche insite nella natura *publisher/subscriber* del protocollo **mqtt**, è l'aggiornamento continuo di una variabile a carico del *broker*. Un risultato simile viene ottenuto da **CoAP**, estendendo il modello della richiesta aggiungendo un flag, *observe* appunto, che se posto a *true*, porta il server (generalmente il nostro sensore intelligente), a comunicare il cambio di stato ai vari client ogni qual volta questi si verifica. 
