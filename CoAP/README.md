@@ -9,9 +9,9 @@ A differenza di mqtt, che prevede un modello *publisher/subscriber*, CoAP implem
 ## Application Level QoS ##
 I messaggi tra client e server, possono essere impostati come *confirmable* e *nonconfirmable*. All'invio dei messaggi del primo tipo deve sempre corrispondere un *Acknowledgment* che ne garantisce la ricezione
 ## Negoziazione dei contenuti ##
-Caratteristica inteesante di CoAP è che, al pari di HTTP, supporta la negoziazione dei contenuti che consentirà di scegliere la rappresentazione dei contenuti preferita nella comunicazione *client-server* (XML, json,...). Sempre al pai di HTTP, è possibile utilizzare delle query string che consentiranno l'implementazione di funzionalità accessorie quali *Ricerca*, *Paginazione*, ecc.
+Caratteristica inteesante di CoAP è che, al pari di HTTP, supporta la negoziazione dei contenuti che consentirà di scegliere la rappresentazione dei contenuti preferita nella comunicazione *client-server* (XML, json,...). Sempre al pai di HTTP, è possibile utilizzare delle query string che consentiranno l'implementazione di funzionalità accessorie quali *Ricerca*, *Paginazione*, ecc.  
 ## Sicurezza ##
-Essendo implementato sul protocollo **UDP**, CoAP, si affida all'analogo UDP di **TLS**, ovvero **DTLS** (**D**atagram **T**ransport **L**ayer **S**ecurity).
+Essendo implementato sul protocollo **UDP**, CoAP, si affida all'analogo UDP di **TLS**, ovvero **DTLS** (**D**atagram **T**ransport **L**ayer **S**ecurity).  
 ## Observe ##
-Tra le caratteristiche insite nella natura *publisher/subscriber* del protocollo **mqtt**, è l'aggiornamento continuo di una variabile a carico del *broker*. Un risultato simile viene ottenuto da **CoAP**, estendendo il modello della richiesta aggiungendo un flag, *observe* appunto, che se posto a *true*, porta il server (generalmente il nostro sensore intelligente), a comunicare il cambio di stato ai vari client ogni qual volta questi si verifica.
+Tra le caratteristiche insite nella natura *publisher/subscriber* del protocollo **mqtt**, è l'aggiornamento continuo di una variabile a carico del *broker*. Un risultato simile viene ottenuto da **CoAP**, estendendo il modello della richiesta aggiungendo un flag, *observe* appunto, che se posto a *true*, porta il server (generalmente il nostro sensore intelligente), a comunicare il cambio di stato ai vari client ogni qual volta questi si verifica.  
 ## Resource discovery ##
